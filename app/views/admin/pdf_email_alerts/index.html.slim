@@ -1,0 +1,27 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Pdf Email Alerts' => admin_pdf_email_alerts_path }
+- if @email_alerts.any?
+  table.table.table-striped.table-hover.table-events
+    thead
+      tr
+        th User groups
+        th Status
+        th Last action at
+        th Actions
+    tbody
+      - @email_alerts.each do |alert|
+        tr.gradeX
+
+          td = alert.user_groups.map(&:humanize).join(', ')
+          td = link_to alert.status, preview_admin_pdf_email_alert_path(alert)
+          td = l(alert.created_at, format: :post_edit)
+          td.actions
+            = link_to preview_admin_pdf_email_alert_path(alert), class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Preview
+
+  .pagination-container.clearfix
+    = paginate_list @email_alerts
+    = paginate_per
+- else
+  .no-items
+    p There are no Pdf Email Alerts

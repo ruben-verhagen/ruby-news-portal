@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @user], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-body
+    = f.input :expires_at, as: :string, input_html: { value: (l(@user.expires_at, format: :post_edit) if @user.expires_at), class: 'datepicker', 'data-datetime-picker' => true }
+    = f.input :user_group, collection: User.user_groups.collect{|key, val| [key.humanize, val]}, input_html: { 'data-custom-select' => true, class: 'select2me' }
+
+
+  .form-actions.fluid
+    .col-md-offset-2.col-md-10
+      = f.button :submit, 'Save', class: 'green'

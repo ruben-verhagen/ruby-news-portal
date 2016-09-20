@@ -1,0 +1,35 @@
+nav#navigation
+  a.menu-link.js-menu-link href="#"
+    i.icon.icon-menu
+  #menu.menu-block
+    ul.sections
+      - @root_sections.each do |root_section|
+        li
+          - root_section_url = section_posts_url(section_slug: root_section.slug)
+          h2
+            = link_to section_posts_url(section_slug: root_section.slug), class: 'with-child', onclick: 'return false;' do
+              = root_section.name
+
+          ul.subsections
+            - root_section.subsections.joins('right outer join post_sections_posts on post_sections_posts.post_section_id = post_sections.id').distinct.each do |subsection|
+              li
+                = link_to section_posts_url(section_slug: subsection.slug) do
+                  = subsection.name
+                  i.icon.icon-angle-right
+
+    table.bottom-links
+      tr
+        td
+          ul
+            li= link_to 'Login', new_user_session_url
+            li
+              a(href="#" data-open-free-trial-modal) Sign Up
+            li= link_to 'About Us', page_url(slug: 'about-us')
+            li= link_to 'Contact', page_url(slug: 'contact')
+        td
+          ul
+            li= link_to 'Terms and Conditions', page_url(slug: 'terms-and-conditions')
+            li= link_to 'Press', 'https://mninews.marketnews.com/press-releases', target: '_blank'
+            li= link_to 'Trademarks', 'http://deutsche-boerse.com/dbg/dispatch/en/kir/dbg_nav/home?displayText=footerTrademarks', target: '_blank'
+            li= link_to 'Disclaimer', 'http://deutsche-boerse.com/dbg/dispatch/en/kir/dbg_nav/home?displayText=footerDisclaimer', target: '_blank'
+            li= link_to 'Imprint', 'http://deutsche-boerse.com/dbg/dispatch/en/kir/dbg_nav/home?displayText=footerIMP', target: '_blank'

@@ -1,0 +1,5 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Graphs' => admin_graphs_path,
+                 "Editing <small>'#{truncate(@graph.name, length: 36)}'</small>" => edit_admin_graph_path(@graph) }
+
+= render 'form'

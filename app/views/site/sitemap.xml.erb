@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+    <% @posts.each do |post| %>
+        <url>
+        <loc><%= post_url(post) %></loc>
+        <news:news>
+            <news:publication>
+                <news:name><%= post.headline %></news:name>
+                <news:language>en</news:language>
+            </news:publication>
+
+            <news:genres><%= post.post_sections.pluck(:name).join(', ') %></news:genres>
+
+            <news:publication_date><%= l post.published_at, format: :sitemap %></news:publication_date>
+            <news:title><%= post.headline %></news:title>
+            <news:keywords><%= post.seo_keywords %></news:keywords>
+        </news:news>
+    </url>
+    <% end %>
+</urlset>

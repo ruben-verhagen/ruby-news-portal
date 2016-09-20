@@ -1,0 +1,7 @@
+.scale-block
+  .top-scale
+    h4 The Euro Poll
+    p.center-text
+    = widget :graph, :show, width: 215, value: @graph.average_6, min_value: @graph.spread_min, max_value: @graph.spread_max, labels: true
+
+    = link_to 'Read more', graph_path(id: 'euro-poll'), class: 'btn btn-transparent'

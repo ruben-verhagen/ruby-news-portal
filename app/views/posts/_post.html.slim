@@ -1,0 +1,55 @@
+- post_visible = post.visible_for? current_user
+- opinion_section_id = nil unless defined? opinion_section_id
+article.news-article(data-post-id="#{post.slug}" data-path="#{post_path(post)}")
+  header
+    - if post_visible
+      = link_to post_path(post) do
+        h1 = post.headline
+    -else
+      a href="" data-open-premium-post-modal=""
+        h1 = post.headline
+    ul.data-list
+      - if post.post_section_ids.include? opinion_section_id
+        li
+          | Opinion
+      li
+        - if post.authors.any?
+          ' Authors:
+          - last_index = post.authors.size - 1
+          - post.authors.each_with_index do |author, index|
+            = link_to author.name, author_path(author)
+            - unless last_index == index
+              ' ,
+      - if post.countries.present?
+        li= separated_countries(post.countries)
+      - if post.published_at
+        li
+          i.icon.icon-time>
+          = l post.published_at, format: :long
+  - if post_visible
+    .article-body
+      h2= post.byline
+      - if post.cover.path
+        = link_to post_path(post) do
+          .image-container
+            = image_tag post.cover.url(:main)
+            table.title
+              tr
+                td.descr= post.cover_description
+                td.credits= post.cover_credits
+
+
+      div.text(data-text)
+        == post.content
+
+  footer *(post_visible ? { class: 'visible' } : { class: 'locked'} )
+    = widget :social_share, :post, url: post_url(id: post.id), title: post.headline, image_url: (post.cover.url(:main) if post.cover.path)
+
+    - if post.visible_for? current_user
+      = link_to '', post_path(post, print: true), class: 'print-post'
+      = link_to 'Read more', post_path(post), class: 'btn btn-transparent read-more', 'data-read-more' => true
+    - else
+      = link_to '', class: 'btn btn-transparent read-more', 'data-open-premium-post-modal' => '' do
+        i.fa.fa-lock
+        | Read more
+      = image_tag 'lock-icon.svg', class: 'post-locked-icon', width: '28px'

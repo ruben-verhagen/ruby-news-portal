@@ -1,0 +1,12 @@
+- step_number = step == :common_settings ? 1 : 2
+ul.nav.nav-pills.nav-justified.steps
+  li class="#{'active' if step_number == 1}"
+    a.step href="#{ admin_email_alert_common_settings_path(alert) }"
+      span.number 1
+      span.desc Common setup
+  li class="#{'active' if step_number == 2}"
+    a.step href="#{alert.initial? ? '#' : admin_email_alert_custom_texts_path(alert) }"
+      span.number 2
+      span.desc Custom texts setup
+#bar.progress.progress-striped role="progressbar"
+  .progress-bar.progress-bar-success style="width: #{100 * step_number / 2}%;"

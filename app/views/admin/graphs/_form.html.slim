@@ -1,0 +1,54 @@
+= simple_form_for [:admin, @graph], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+
+  .form-body.graph-edit
+    = f.input :name
+    = f.input :description, as: :text
+
+    = f.input :spread_min, as: :float
+    = f.input :spread_max, as: :float
+
+    = f.input :existing, as: :float
+
+    .row
+      label.col-md-2.control-label Periods data
+      .col-md-9
+        - if @simple
+          = f.input :average_6, as: :float, label: false
+        - else
+          table.table.periods-data
+            tr.bold
+              td
+              td= f.input :period_3_name, label: false, placeholder: '3 months'
+              td= f.input :period_6_name, label: false, placeholder: '6 months'
+              td= f.input :period_9_name, label: false, placeholder: '9 months'
+              td= f.input :period_12_name, label: false,placeholder: '12 months'
+
+            tr
+              td.bold Median
+              td= f.input :median_3, as: :float, label: false
+              td= f.input :median_6, as: :float, label: false
+              td= f.input :median_9, as: :float, label: false
+              td= f.input :median_12, as: :float, label: false
+
+            tr
+              td.bold Average
+              td= f.input :average_3, as: :float, label: false
+              td= f.input :average_6, as: :float, label: false
+              td= f.input :average_9, as: :float, label: false
+              td= f.input :average_12, as: :float, label: false
+
+            tr
+              td.bold High
+              td= f.input :high_3, as: :float, label: false
+              td= f.input :high_6, as: :float, label: false
+              td= f.input :high_9, as: :float, label: false
+              td= f.input :high_12, as: :float, label: false
+
+            tr
+              td.bold Low
+              td= f.input :low_3, as: :float, label: false
+              td= f.input :low_6, as: :float, label: false
+              td= f.input :low_9, as: :float, label: false
+              td= f.input :low_12, as: :float, label: false
+
+  = form_buttons f, cancel_path: admin_graphs_path

@@ -1,0 +1,48 @@
+= render 'header_and_breadcrumbs'
+
+- unless TwitterAccount.has_twitter_account?
+  = render 'admin/connect_to_twitter_alert'
+.row
+  .col-md-4
+    .dashboard-stat.blue
+      .visual
+        i.fa.fa-files-o
+
+      .details
+        .number= @posts_in_digest_count
+        .desc Posts in weekly briefing
+
+      = link_to admin_weekly_digest_path(format: :pdf), class: 'more'
+        ' Download in PDF
+        i.m-icon-swapright.m-icon-white
+
+  .col-md-4
+    .dashboard-stat.green
+      .visual
+        i.fa.fa-group
+
+      .details
+        .number= @total_post_unique_visitors
+        .desc Total unique visitors
+
+      = link_to admin_posts_path, class: 'more'
+        ' View posts
+        i.m-icon-swapright.m-icon-white
+
+  .col-md-4
+    .dashboard-stat.purple
+      .visual
+        i.fa.fa-eye
+
+      .details
+        .number= @total_page_views
+        .desc Total page views
+
+      = link_to admin_posts_path, class: 'more'
+        ' View posts
+        i.m-icon-swapright.m-icon-white
+
+
+.row
+  .col-md-12
+    = render 'post_views_stats'

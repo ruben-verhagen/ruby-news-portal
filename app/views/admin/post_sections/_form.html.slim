@@ -1,0 +1,13 @@
+= simple_form_for [:admin, @post_section], html: { class: 'form form-horizontal' },
+                  wrapper: :horizontal_form do |f|
+
+  .form-body
+    = f.input :name
+    = f.input :description
+    = f.association :parent, prompt: '– No parent section –'
+    = f.input :in_top_menu
+    = f.input :cover, as: :image, input_html: { version: :thumb }
+    - unless @post_section.cover.blank?
+      = f.input :remove_cover, as: :boolean
+
+  = form_buttons f, cancel_path: admin_post_sections_path

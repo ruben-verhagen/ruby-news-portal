@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="texthtml; charset=UTF-8" http-equiv="Content-Type">
+    <style>
+      body { font-family: Arial, sans-serif; font-size: 14px;}
+      .unsubscribe { font-size: 12px; color: #888; }
+    </style>
+  </head>
+  <body>
+    <img src="http://s29.postimg.org/n6lk9p6pv/logo_mni_small.png"/>
+
+    <br>
+    <%= yield %>
+    <br>
+
+    <%= link_to 'Unsubscribe from this mail list', '%unsubscribe_url%', class: 'unsubscribe' %>
+  </body>
+</html>

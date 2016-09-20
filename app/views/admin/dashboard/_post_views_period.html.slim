@@ -1,0 +1,15 @@
+.table-responsive
+  - if @post_views_data[period].any?
+    table.table.table-striped.table-hover.stats-widget(data-stats-post-views-table)
+      thead
+        tr
+          th Post
+          th.integer Unique views
+      tbody
+        - @post_views_data[period].each do |post|
+          tr
+            td = link_to truncate(post.headline, length: 60), edit_admin_post_path(post)
+            td.integer= post.views
+
+  - else
+    h4 There is no data for this period

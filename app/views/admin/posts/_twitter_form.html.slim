@@ -1,0 +1,11 @@
+- if TwitterAccount.has_twitter_account?
+  = simple_form_for @twitter_alert_form, url: admin_post_twitter_alerts_path(@post), method: :put, html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+    .form-body
+      = f.input :twitter_text, as: :text, placeholder: 'Enter text to post alert to twitter', input_html: {'ng-model' => 'twitterText', 'ng-trim' => false, maxlength: TwitterPoster::TWEET_POST_LENGTH - TwitterPoster::ALTERED_URL_LENGTH}, hint: "{{#{TwitterPoster::TWEET_POST_LENGTH - TwitterPoster::ALTERED_URL_LENGTH} - twitterText.length}}"
+      = f.input :twitter_account_id, collection: TwitterAccount.all, include_blank: false, label_method: :username, value_method: :id
+
+    .form-actions.fluid
+      .col-md-offset-2.col-md-10
+        = f.button :submit, 'Tweet', class: 'btn-success'
+- else
+  = render 'admin/connect_to_twitter_alert'

@@ -1,0 +1,47 @@
+.clear_after
+  &:before, &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+  zoom: 1
+
+=clear_after
+  @extend .clear_after
+
+
+//mixin for font-size
+
+
+=font_size($sizeValue)
+  font-size: $sizeValue + px
+  font-size: (0.0625 * $sizeValue) + rem
+
+=line_height($heightValue)
+  line-height: $heightValue + px
+  line-height: (0.0625 * $heightValue) + rem
+
+
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+
+=animation($animation...)
+  -o-animation: $animation
+  -moz-animation: $animation
+  -webkit-animation: $animation
+  animation: $animation
+
+=popup-sizing($width, $height)
+  width: $width
+  height: $height
+  margin-top: -$height/2
+  margin-left: -$width/2

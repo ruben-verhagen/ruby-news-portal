@@ -1,0 +1,6 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Events' => admin_events_path,
+                 'Creating new event' => new_admin_event_path }
+
+h1.page-title New event
+= render 'form'

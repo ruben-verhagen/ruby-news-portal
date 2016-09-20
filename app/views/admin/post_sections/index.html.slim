@@ -1,0 +1,41 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Posts sections' => admin_post_sections_path}
+- if @post_sections.any?
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th In top menu
+        th Cover
+        th Name
+        th Parent Section
+        th.actions
+    tbody
+      - @post_sections.each do |post_section|
+        - edit_path = edit_admin_post_section_path(post_section)
+        tr.odd.gradeX
+          td.center.w-100
+            - if post_section.in_top_menu
+              i.fa.fa-check.icon-yes-no.yes
+            - else
+              i.fa.fa-check.icon-yes-no
+          td.w-140
+            - unless post_section.cover.blank?
+              = image_tag post_section.cover.url(:thumb_small)
+          td= link_to post_section.name, edit_path
+
+          td
+            - if post_section.parent
+              = link_to post_section.parent.name, edit_admin_post_section_path(post_section.parent)
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple' do
+              i.fa.fa-edit
+              '
+              | Edit
+
+            '
+            = link_to admin_post_section_path(post_section), class: 'btn default btn-xs', method: :delete, data: {confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o>
+              | Delete
+- else
+  .no-items
+    p There are no post sections

@@ -1,0 +1,26 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Pages' => admin_pages_path }
+- if @pages.any?
+  table.table.table-striped.table-hover.table-pages
+    thead
+      tr
+        th Title
+        th Content
+        th.actions Actions
+    tbody
+      - @pages.each do |page|
+        - edit_path = edit_admin_page_path(page)
+        tr.gradeX
+          td = link_to page.title, edit_path
+          td = truncate_html(page.content, length: 60)
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Edit
+
+  .pagination-container.clearfix
+    = paginate_list @pages
+    = paginate_per
+- else
+  .no-items
+    p There are no pages

@@ -1,0 +1,33 @@
+= render 'header_and_breadcrumbs'
+
+- if @email_alerts.any?
+  table.table.table-striped.table-hover.table-email-alerts
+    thead
+      tr
+        th.w-140 User groups
+        th Posts
+        th Status
+        th Created At
+        th
+    tbody
+      - @email_alerts.each do |email_alert|
+        tr.gradeX
+          td = email_alert.user_groups.map(&:humanize).join(', ')
+          td == email_alert.posts.map { |p| link_to truncate(p.headline, length: 80), edit_admin_post_path(p) }.join('<br>')
+          td = email_alert.status.try(:humanize)
+          td = l(email_alert.created_at, format: :post_edit)
+          td.actions
+            - if email_alert.sent?
+              = link_to 'Show', admin_email_alert_path(email_alert), class: 'btn btn-sm btn-info'
+            - else
+              => link_to 'Setup & Send', admin_email_alert_common_settings_path(email_alert), class: 'btn btn-sm btn-info'
+              = link_to admin_email_alert_path(email_alert), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do
+                i.fa.fa-trash-o>
+                | Delete
+
+  .pagination-container.clearfix
+    = paginate_list @email_alerts
+    = paginate_per
+- else
+  .no-items
+    p There are no alerts

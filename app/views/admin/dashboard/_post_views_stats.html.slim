@@ -1,0 +1,26 @@
+.portlet.stats-portlet.box.purple
+  .portlet-title
+    .caption
+      i.fa.fa-eye-slash>
+      | Post unique views
+  
+  .portlet-body
+    ul.nav.nav-tabs
+      li.active
+        a href="#post_views_tab_1" data-toggle="tab" All time
+      li
+        a href="#post_views_tab_2" data-toggle="tab" Yesterday
+      li
+        a href="#post_views_tab_3" data-toggle="tab" Last week
+      li
+        a href="#post_views_tab_4" data-toggle="tab" Last Month
+
+    .tab-content
+      #post_views_tab_1.tab-pane.active
+        = render 'admin/dashboard/post_views_period', period: :all_time
+      #post_views_tab_2.tab-pane
+        = render 'admin/dashboard/post_views_period', period: :yesterday
+      #post_views_tab_3.tab-pane
+        = render 'admin/dashboard/post_views_period', period: :last_week
+      #post_views_tab_4.tab-pane
+        = render 'admin/dashboard/post_views_period', period: :last_month

@@ -1,0 +1,15 @@
+.header.navbar.navbar-fixed-top
+  .header-inner
+    = link_to admin_path, class: 'navbar-brand' do
+      = image_tag 'logo-euro-insight.svg', class: 'img-responsive'
+
+    = link_to 'Control panel', admin_path, class: 'navbar-cp-title'
+
+    ul.nav.navbar-nav.pull-right
+      li.dropdown.user
+        = link_to destroy_admin_user_session_path do
+          i.fa.fa-external-link>
+          span.username Log out
+
+
+.clear

@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @schedule], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-body
+    = f.input :form_send_at, as: :string, input_html: { class: 'timepicker-input' }
+    = f.input :user_groups, collection: User.user_groups.collect{|key, val| [key.humanize, val]}, input_html: { multiple: 'multiple', 'data-custom-select' => true, class: 'select2me' }
+    = f.input :days_of_week, as: :select, collection: EmailAlertSchedule.all_days_of_week, input_html: { multiple: 'multiple', 'data-custom-select' => true, class: 'select2me' }
+    = f.input :greeting_message, input_html: { rows: 6, value: @schedule.greeting_message || SiteSetting.find_by(code: 'greeting_message').try(:value) }
+
+  = form_buttons f, cancel_path: admin_email_alert_schedules_path

@@ -1,0 +1,17 @@
+div(data-subscriber-form-wrapper)
+  = form_for(:user, url: session_path(:user), html: { class: 'login-form modal-form subscribe-form' } ) do |f|
+
+    - if flash[:alert].present?
+      div.alert.alert-warning
+        button.close data-close="alert"
+        span= flash[:alert]
+
+
+    fieldset
+      = f.text_field :email, autofocus: true, class: 'base-input', placeholder: 'Username'
+      = f.password_field :password, class: 'base-input', placeholder: 'Password', autocomplete: 'off'
+
+
+      button.btn-blue type="submit"
+        ' Login
+        i.m-icon-swapright.m-icon-white

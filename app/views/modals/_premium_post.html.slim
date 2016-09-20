@@ -1,0 +1,17 @@
+#modal-premium-post.modal.premium-post-modal(data-premium-post-modal)
+  .modal-inner
+    .modal-header
+      a.close-btn(href="#" data-close-modal)
+        i.icon.icon-close
+      h2
+        span.blue
+          | Welcome to
+        | MNI Euro Insight
+    .modal-body
+      p If you are a subscriber or a trialist, please click the login button below.
+      p You will be redirected to the Deutsche Börse login page to enter your username and password.
+      = link_to 'Login', new_user_session_path, class: 'btn-blue popup-btn'
+      p Sign up for a free-30-day trial of MNI Euro Insight and you will get access to the most exclusive interviews, analysis and reports that Euro Insight has to offer.
+      p MNI Euro Insight draws from MNI’s  extensive contacts and exceptional relationships with senior European policymakers in Brussels and major capitals to create timely, in-depth, insightful intelligence on the Eurozone economic and financial policy making process.
+      p Please click below to sign up.
+      a.btn-black.popup-btn(data-open-free-trial-modal) Free Trial

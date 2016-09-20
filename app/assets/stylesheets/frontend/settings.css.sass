@@ -1,0 +1,35 @@
+@import 'variables'
+
+article.user-settings
+  padding-top: 20px
+  header
+    padding-bottom: 1px
+    .back-button
+      float: right
+
+  .row
+    padding-bottom: 80px
+
+    .inline-field
+      float: left
+    .email-label
+      font-weight: bold
+      padding-bottom: 10px
+    .email-field
+      padding-right: 40px
+      .email
+        color: $color-gray
+        font-size: 18px
+        font-weight: bold
+
+    .email-alerts-field
+      font-size: 16px
+      color: $color-gray
+  input[type="submit"]
+    background-color: #ffffff
+    cursor: pointer
+    line-height: 28px
+    &:hover
+      background-color: rgba(#000, 0.05)
+      border: 1px solid #555
+      color: #333

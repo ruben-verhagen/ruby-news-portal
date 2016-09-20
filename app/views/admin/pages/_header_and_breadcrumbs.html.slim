@@ -1,0 +1,22 @@
+.row
+  .col-md-12
+    h3.page-title
+      i.fa.header-icon.fa-file-text-o
+      '
+      ' Pages
+      small management
+
+    ul.page-breadcrumb.breadcrumb
+      li
+        i class="fa fa-home"
+        '
+        = link_to 'Dashboard', admin_path
+      - breadcrumbs.each do |name, path|
+        li
+          '
+          i class="fa fa-angle-right"
+          '
+          = link_to raw(name), path
+.row
+  .col-md-12
+    = render 'flash_messages'

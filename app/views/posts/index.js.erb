@@ -1,0 +1,10 @@
+$('.posts').append('<%= escape_javascript(render partial: 'post', collection: @posts, locals: {opinion_section_id: @opinion_section_id})%>');
+$('article').each(function() {
+    new CollapsableArticle($(this))
+});
+
+
+$('a.load-more-posts').attr('href', '<%= @next_page_path %>');
+<% unless @posts.next_page %>
+  $('.load-more-posts-container').remove();
+<% end %>

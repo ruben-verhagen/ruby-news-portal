@@ -1,0 +1,24 @@
+- content_for(:title) { @graph.name }
+
+.header-menu.mobile-hide
+  ul.clearfix
+    li
+    - @all_graphs.each do |graph|
+      li
+        = active_link_to graph_path(id: graph.slug) do
+          = graph.name
+
+h1 #{@graph.name}
+p.pre-news
+  = @graph.description
+
+
+- if @simple
+  = render 'simple_graph'
+- else
+  = render 'full_graph'
+
+
+= widget :top_stories, :main
+- if @post
+  = render 'posts/post', post: @post, opinion_section_id: @opinion_section_id

@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @author], html: { class: 'form form-horizontal' },
+                  wrapper: :horizontal_form do |f|
+
+  .form-body
+    = f.input :name
+    = f.input :photo, as: :image, input_html: { version: :main }
+
+  = form_buttons f, cancel_path: admin_authors_path

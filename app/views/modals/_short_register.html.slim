@@ -1,0 +1,12 @@
+#modal-short-register.modal.short-register-modal(data-short-register-modal)
+  .modal-inner
+    .modal-header
+      a.close-btn(href="#" data-close-modal)
+        i.icon.icon-close
+      h2
+        span.blue
+          | Welcome to
+        | MNI Euro Insight
+    .modal-body
+      p Please fill out the information below to make request for a subscribing.
+      = render 'users/short_form'

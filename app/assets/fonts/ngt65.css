@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'NewsGothicDemi';
+    src: url('ngt65.eot');
+    src: url('ngt65.eot') format('embedded-opentype'),
+         url('ngt65.woff2') format('woff2'),
+         url('ngt65.woff') format('woff'),
+         url('ngt65.ttf') format('truetype'),
+         url('ngt65.svg#NewsGothicDemi') format('svg');
+}

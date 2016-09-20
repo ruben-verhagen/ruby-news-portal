@@ -1,0 +1,27 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Graphs' => admin_graphs_path}
+- if @graphs.any?
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th Name
+        th.actions
+    tbody
+      - @graphs.each do |graph|
+        - edit_path = edit_admin_graph_path(graph)
+        tr.gradeX
+          td= link_to graph.name, edit_path
+
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple' do
+              i.fa.fa-edit
+              '
+              | Edit
+
+            '
+            = link_to admin_graph_path(graph), class: 'btn default btn-xs', method: :delete, data: {confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o>
+              | Delete
+- else
+  .no-items
+    p There are no graphs

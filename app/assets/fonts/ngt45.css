@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'NewsGothicLight';
+    src: url('ngt45.eot');
+    src: url('ngt45.eot') format('embedded-opentype'),
+         url('ngt45.woff2') format('woff2'),
+         url('ngt45.woff') format('woff'),
+         url('ngt45.ttf') format('truetype'),
+         url('ngt45.svg#NewsGothicLight') format('svg');
+}

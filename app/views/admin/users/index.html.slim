@@ -1,0 +1,45 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Users' => admin_users_path }
+= render 'filter_form'
+
+- if @users.any?
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th Id
+        th Email
+        th First Name
+        th Last Name
+        th Group
+        th Prev Group
+        th Expires at
+        th Country
+        th Actions
+    tbody
+      - @users.each do |user|
+        tr.gradeX
+          td= user.id
+          td= link_to user.email, edit_admin_user_path(user)
+          td= user.first_name
+          td= user.last_name
+          td= user.user_group.try(:humanize)
+          td= user.previous_user_group.try(:HUMANIZE)
+          td
+            - if user.expires_at.present?
+              = l user.expires_at, format: :short
+
+          td
+            - if user.country.present?
+              = user.country
+          td.actions
+            = link_to edit_admin_user_path(user), class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Edit
+
+  .pagination-container.clearfix
+    = paginate_list @users
+    = paginate_per
+
+  = link_to 'Export to CSV', export_admin_users_path(params), class: 'btn btn-lg btn-default'
+- else
+  .no-items
+    p There are no subscribers. Please specify other filter options.

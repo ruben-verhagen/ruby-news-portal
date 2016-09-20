@@ -1,0 +1,6 @@
+= render 'header_and_breadcrumbs',
+         breadcrumbs: { 'Sales managers' => admin_sales_managers_path,
+                        "Editing <small>'#{@sales_manager.name}'</small>" => edit_admin_sales_manager_path(@sales_manager) }
+
+h1.page-title= "Editing ' #{@sales_manager.name} '"
+= render 'form'

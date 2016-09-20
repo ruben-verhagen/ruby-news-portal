@@ -1,0 +1,13 @@
+.editors-block
+  - @posts.each do |post|
+    div
+      - if post.visible_for? @user
+        = link_to post_path(post), class: 'editor-link' do
+          = post.headline
+          span.author= l post.published_at, format: :short
+      - else
+        = link_to '', class: 'editor-link', data: {'not-signed-in' => ''} do
+          = image_tag 'lock-icon.svg', class: 'locked-icon', width: '16px'
+          = post.headline
+          span.author= l post.published_at, format: :short
+

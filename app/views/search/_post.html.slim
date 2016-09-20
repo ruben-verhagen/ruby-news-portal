@@ -1,0 +1,4 @@
+.news-block
+  span.date = l post.published_at, format: :literal
+  = link_to post.headline, post_path(post), class: 'title'
+  == truncate_html(post.content, length: 400)

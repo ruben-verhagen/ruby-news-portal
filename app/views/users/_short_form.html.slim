@@ -1,0 +1,12 @@
+div(data-registrant-short-form-wrapper)
+  - submit_path = current_user && current_user.trialist? ? invite_request_user_path : short_create_user_path
+  = form_for @new_user, url: submit_path, method: :post, remote: true, html: { class: 'modal-form subscribe-form' } do |f|
+    .form-title
+      span.number 1s
+      span.title Enter Your information
+    - if flash[:error].present?
+      p.errors = flash[:error]
+    fieldset
+      = f.email_field :email, required: true, class: "base-input #{'error' if @new_user.errors[:email].any?}", placeholder: 'E-mail'
+
+      = f.submit 'Register', class: 'btn-blue'

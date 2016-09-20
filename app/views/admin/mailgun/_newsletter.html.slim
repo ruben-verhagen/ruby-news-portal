@@ -1,0 +1,6 @@
+p = greeting.html_safe
+br
+- posts.each do |post|
+  p= link_to post[:headline], Rails.application.routes.url_helpers.post_url(post[:post_id])
+  p= post[:description]
+  br

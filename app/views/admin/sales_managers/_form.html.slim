@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @sales_manager], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-body
+    = f.input :name
+    = f.input :email
+    = f.input :trial_registrants, label: 'Alert with trial registrants'
+
+  .form-actions.fluid
+    .col-md-offset-2.col-md-10
+      = f.button :submit, 'Save', class: 'green'
+      = link_to 'Cancel', admin_sales_managers_path, class: 'btn btn-lg default'

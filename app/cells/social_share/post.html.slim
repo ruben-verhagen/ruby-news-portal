@@ -1,0 +1,12 @@
+.social-part
+  span
+    | share this link
+
+  a.twitter href="#" onClick="SocialSharer.shareToTw('#{@url}', '#{@title}')"
+    i.icon.icon-twitter
+  a.facebook href="#" onClick="SocialSharer.shareToFb('#{@url}', '#{@title}', '', '#{@image_url}')"
+    i.icon.icon-facebook
+  a.gplus href="#" onClick="SocialSharer.shareToGp('#{@url}', '#{@title}', '', '#{@image_url}')"
+    i.icon.icon-gplus
+  a.in href="#" onClick="SocialSharer.shareToLi('#{@url}', '#{@title}', '', '#{@image_url}')"
+    i.icon.icon-linkedin

@@ -1,0 +1,15 @@
+- if @is_home_page
+  = widget :top_stories, :main
+
+- if @posts.any?
+  .posts
+    = render partial: 'post', collection: @posts, locals: {opinion_section_id: @opinion_section_id}
+
+  - if @posts.next_page
+    .load-more-posts-container
+      = render 'frontend/posts_loader'
+      = link_to 'Load More Posts', @next_page_path, :class => 'load-more-posts', :remote => true
+
+- else
+  .no-items
+    p There are no posts in this section

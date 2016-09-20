@@ -1,0 +1,17 @@
+.opinion-block
+  - first_author = @post.authors.first
+  - if first_author && first_author.photo.path
+    = image_tag first_author.photo.url(:main)
+  - else
+    = image_tag 'opinions-default.jpg'
+
+  h4 Opinions
+  - if @post.visible_for? @user
+    = link_to post_path(@post), class: 'title' do
+      = @post.headline
+      span.author= @post.author_names
+  - else
+    = link_to '', class: 'title', data: {'not-signed-in' => ''} do
+      = image_tag 'lock-icon.svg', class: 'locked-icon', width: '16px'
+      = @post.headline
+      span.author= @post.author_names

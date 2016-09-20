@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    h3.page-title
+      i.fa.header-icon.fa-envelope>
+      ' Email alerts
+      small management
+
+    ul.page-breadcrumb.breadcrumb
+      li.btn-group
+        = link_to new_admin_email_alert_path, class: 'btn btn-primary blue' do
+          i class="fa fa-plus"
+          span Add new email alert
+      li
+        i class="fa fa-home"
+        '
+        = link_to 'Dashboard', admin_path
+      li
+        i class="fa fa-angle-right"
+        '
+        = link_to 'Email alerts', admin_email_alerts_path
+.row
+  .col-md-12
+    = render 'flash_messages'

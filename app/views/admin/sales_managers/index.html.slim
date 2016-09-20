@@ -1,0 +1,38 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Sales Managers' => admin_sales_managers_path }
+
+- if @sales_managers.any?
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th Name
+        th Email
+
+        th.center Trial registrants notifications
+        th.actions
+    tbody
+      - @sales_managers.each do |sales_manager|
+        - edit_path = edit_admin_sales_manager_path(sales_manager)
+        tr.gradeX
+          td = link_to sales_manager.name, edit_path
+          td = link_to sales_manager.email, edit_path
+          td.center
+            - if sales_manager.trial_registrants
+              i.fa.fa-check
+
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Edit
+
+            '
+            = link_to admin_sales_manager_path(sales_manager), class: 'btn default btn-xs', method: :delete, data: {confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o>
+              | Delete
+
+  .pagination-container.clearfix
+    = paginate_list @sales_managers
+    = paginate_per
+- else
+  .no-items
+    p There are no managers

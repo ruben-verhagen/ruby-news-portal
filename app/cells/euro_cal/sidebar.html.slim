@@ -1,0 +1,11 @@
+.call-block
+  = link_to events_path, class: 'call-head' do
+    h3.title
+      | Euro Cal
+    span.add
+      i.icon.icon-add
+  .call-content
+    - @events.each do |event|
+      span.editor-link
+        = event.title
+        span.date = l event.happens_at, format: :literal

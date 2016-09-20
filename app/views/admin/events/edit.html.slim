@@ -1,0 +1,5 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Event' => admin_posts_path,
+                 "Editing <small>'#{truncate(@event.title, length: 40)}'</small>" => edit_admin_event_path(@event) }
+h1.page-title= "Editing  ' #{@event.title} '"
+= render 'form'

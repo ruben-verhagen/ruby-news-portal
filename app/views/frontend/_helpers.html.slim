@@ -1,0 +1,15 @@
+= render 'modals/login'
+= render 'modals/expired_trial'
+= render 'modals/register'
+= render 'modals/free_trial'
+= render 'modals/thanks_trial'
+= render 'modals/premium_post'
+= render 'modals/short_register'
+= render 'modals/few_days_expiration_popup'
+= render 'modals/week_expiration_popup'
+
+#fade(data-fade-overlay)
+
+- if session[:post_preview_id]
+  = link_to 'Go back to post editing', edit_admin_post_path(id: session[:post_preview_id]), id: 'go-back-to-admin'
+

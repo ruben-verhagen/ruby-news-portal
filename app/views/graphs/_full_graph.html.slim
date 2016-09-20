@@ -1,0 +1,72 @@
+.scales-block.clearfix
+  .scale-block
+    h4= @graph.period_3_name
+    = widget :graph, :show, width: 265, value: @graph.average_3, min_value: @graph.spread_min, max_value: @graph.spread_max
+    - unless @simple
+      table.scale-table
+        thead
+          tr
+            td Median
+            td Avge
+            td Hi
+            td Lo
+        tbody
+          tr.values
+            td = @graph.median_3
+            td = @graph.average_3
+            td = @graph.high_3
+            td = @graph.low_3
+
+  .scale-block
+    h4= @graph.period_6_name
+
+    = widget :graph, :show, width: 265, value: @graph.average_6, min_value: @graph.spread_min, max_value: @graph.spread_max
+    - unless @simple
+      table.scale-table
+        thead
+          tr
+            td Median
+            td Avge
+            td Hi
+            td Lo
+        tbody
+          tr.values
+            td = @graph.median_6
+            td = @graph.average_6
+            td = @graph.high_6
+            td = @graph.low_6
+  .scale-block
+    h4= @graph.period_9_name
+    = widget :graph, :show, width: 265, value: @graph.average_9, min_value: @graph.spread_min, max_value: @graph.spread_max
+    - unless @simple
+      table.scale-table
+        thead
+          tr
+            td Median
+            td Avge
+            td Hi
+            td Lo
+        tbody
+          tr.values
+            td = @graph.median_9
+            td = @graph.average_9
+            td = @graph.high_9
+            td = @graph.low_9
+
+  .scale-block
+    h4= @graph.period_12_name
+    = widget :graph, :show, width: 265, value: @graph.average_12, min_value: @graph.spread_min, max_value: @graph.spread_max
+    - unless @simple
+      table.scale-table
+        thead
+          tr
+            td Median
+            td Avge
+            td Hi
+            td Lo
+        tbody
+          tr.values
+            td = @graph.median_12
+            td = @graph.average_12
+            td = @graph.high_12
+            td = @graph.low_12

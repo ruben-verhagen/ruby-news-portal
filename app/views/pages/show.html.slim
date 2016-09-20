@@ -1,0 +1,7 @@
+- content_for(:title) { @page.title }
+
+article.news-article
+  header
+    h1 = @page.title
+  .article-body.static-page
+    == @page.content

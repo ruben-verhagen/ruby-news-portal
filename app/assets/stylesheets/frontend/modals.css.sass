@@ -1,0 +1,219 @@
+.modal
+  position: fixed
+  width: 740px
+  height: 550px
+  background: #fff
+  top: 50%
+  left: 50%
+  margin-left: -370px
+  margin-top: -315px
+  z-index: 200
+  display: none
+  &.login-modal
+    height: 330px
+    margin-top: -185px
+
+  .modal-inner
+    padding: 70px 65px 60px
+    position: relative
+
+    .close-btn
+      position: absolute
+      font-size: 30px
+      top: 25px
+      right: 25px
+      color: #000
+
+    h2
+      +font-size(40)
+      +line-height(50)
+
+      color: #252629
+      margin-bottom: 30px
+
+      span
+        display: block
+
+    .modal-body
+      +font-size(15)
+      +line-height(18)
+
+      p
+        padding: 4px 0
+
+    .modal-form
+      margin-top: 30px
+
+      .errors
+        padding-bottom: 12px
+        color: #a01c20
+
+      .checkbox-label
+        font-size: 13px
+        font-size: 0.8125rem
+        color: #c1bcbc
+        font-weight: 700
+        line-height: 32px
+        position: relative
+        margin-bottom: 40px
+        .error
+          color: #a01c20
+        .field_with_errors
+          display: inline
+
+      .form-title
+        +font-size(13)
+
+        color: #c1bcbc
+        font-weight: 700
+        padding-left: 47px
+        line-height: 32px
+        position: relative
+        margin-bottom: 40px
+
+        .number
+          +font-size(15)
+
+          display: inline-block
+          height: 32px
+          width: 32px
+          border-radius: 16px
+          border: 2px solid #d3d3d3
+          color: #d3d3d3
+          text-align: center
+          line-height: 28px
+          position: absolute
+          left: 0
+          top: 0
+
+        @media (max-width: 768px)
+          margin-bottom: 12px
+
+      .checkbox-input
+        float: left
+        margin-top: 10px
+        width: 100%
+        margin-right: 10px
+
+
+      .base-input
+        +font-size(11)
+
+        border: 1px solid #d2d2d2
+        width: 293px
+        float: left
+        margin-right: 10px
+        margin-bottom: 7px
+        height: 33px
+        padding: 0 13px
+        border-radius: 4px
+        outline: none
+
+        &.country
+          width: 595px
+        &.error
+          border: 1px solid #d28678
+
+        &:nth-child(2n)
+          margin-right: 0
+
+      .btn-blue
+        +font-size(15)
+
+        height: 49px
+        width: 199px
+        text:
+          align: center
+          transform: uppercase
+        font:
+          family: 'NFG65', sans-serif
+        color: #fff
+        clear: both
+        background: #009ed8
+        border: none
+        display: block
+        position: relative
+        top: 25px
+        outline: none
+        cursor: pointer
+
+
+  &.warning-popup
+    //@include popup-sizing(800px, 900px)
+
+  &.premium-post-modal
+    @include popup-sizing(800px, 550px)
+
+  &.register-modal
+    @include popup-sizing(780px, 620px)
+
+  &.free-trial-modal
+    @include popup-sizing(780px, 740px)
+
+  &.short-register-modal
+    @include popup-sizing(740px, 600px)
+
+  &.expired-email-registration-modal
+    @include popup-sizing(740px, 660px)
+
+  //&.register-modal
+    .close-btn
+      display: none
+
+  &.thanks-popup
+    $height: 315px
+    height: $height
+    margin-top: -$height/2
+    p
+      padding-bottom: 20px
+
+
+.small-screen
+  .modal
+    width: 100%
+    margin-left: 0
+    left: 0
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+
+    .modal-inner .modal-form .base-input
+      width: 48%
+
+    @media (max-width: 640px)
+      height: 100%
+      top: 0
+      margin-top: 0
+
+    .modal-inner
+      padding: 10px 20px
+
+      h2
+        +font-size(18)
+        +line-height(22)
+        margin-bottom: 10px
+      .modal-form
+        margin-top: 10px
+        .base-input
+          width: 100%
+          float: none
+          margin-right: 0
+          height: 28px
+          margin-bottom: 5px
+        .btn-blue
+          height: 30px
+          line-height: 30px
+          top: 0
+
+
+
+
+#fade
+  background: rgba(0,0,0,.83)
+  width: 100%
+  height: 100%
+  z-index: 100
+  position: fixed
+  top: 0
+  left: 0
+  display: none
+

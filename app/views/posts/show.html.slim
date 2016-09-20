@@ -1,0 +1,59 @@
+- content_for(:title)             { @post.seo_title.present? ? @post.seo_title : @post.headline }
+- content_for(:meta_description)  { @post.seo_description }
+- content_for(:meta_keywords)     { @post.seo_keywords }
+
+- if params[:print].present?
+  javascript:
+    print();
+- post_visible = @post.visible_for? current_user
+
+article.news-article
+  header
+    h1 = @post.headline
+    ul.data-list
+      - if @post.post_section_ids.include? @opinion_section_id
+        li
+          | Opinion
+      - if @post.authors.any?
+        li
+          ' Authors:
+          - last_index = @post.authors.size - 1
+          - @post.authors.each_with_index do |author, index|
+            = link_to author.name, author_path(author)
+            - unless last_index == index
+              ' ,
+
+      - if @post.countries.present?
+        li= separated_countries(@post.countries)
+      li
+        i.icon.icon-time>
+        = l @post.published_at, format: :long
+  - if post_visible
+    .article-body
+      h2= @post.byline
+
+
+      - if @post.video_mp4.path && @post.video_webm.path
+        = video_tag(@post.video_mp4.url, @post.video_webm.url, width: '100%', class: 'video-container', controls: true)
+
+      - elsif @post.cover.path
+        .image-container
+          = image_tag @post.cover.url(:main)
+          table.title
+            tr
+              td.descr= @post.cover_description
+              td.credits= @post.cover_credits
+
+
+      == @post.content
+
+  footer
+    = widget :social_share, :post, url: post_url(id: @post.id), title: @post.headline, image: (@post.cover.url(:main) if @post.cover.path)
+    - if @post.visible_for? current_user
+      = link_to '', '#', class: 'print-post', 'onClick' => 'print()'
+      = link_to 'Back', :back, class: 'btn btn-transparent'
+    - else
+      = link_to '#', class: 'btn btn-transparent', 'data-open-premium-post-modal' => '' do
+        i.fa.fa-lock
+        | Read More
+      = image_tag 'lock-icon.svg', class: 'post-locked-icon', width: '28px'

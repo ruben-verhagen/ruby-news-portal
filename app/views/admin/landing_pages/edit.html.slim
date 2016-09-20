@@ -1,0 +1,5 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Landing Pages' => admin_posts_path,
+                 "Editing <small>'#{truncate(@landing_page.title, length: 40)}'</small>" => edit_admin_landing_page_path(@landing_page) }
+h1.page-title= "Editing  ' #{@landing_page.title} '"
+= render 'form'

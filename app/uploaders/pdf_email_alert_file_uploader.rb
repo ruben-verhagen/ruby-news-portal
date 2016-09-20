@@ -1,0 +1,3 @@
+class PdfEmailAlertFileUploader < BaseUploader
+
+end

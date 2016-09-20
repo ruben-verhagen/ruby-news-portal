@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    h3.page-title
+      i.fa.header-icon.fa-cogs
+      '
+      ' Site settings
+      small management
+
+    ul.page-breadcrumb.breadcrumb
+      li
+        i class="fa fa-home"
+        '
+        = link_to 'Dashboard', admin_path
+      li
+        '
+        i class="fa fa-angle-right"
+        '
+        = link_to 'Site settings', admin_site_settings_path
+.row
+  .col-md-12
+    = render 'flash_messages'

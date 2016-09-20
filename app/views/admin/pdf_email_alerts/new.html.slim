@@ -1,0 +1,10 @@
+= render 'header_and_breadcrumbs',
+         breadcrumbs: { 'Pdf Email Alerts' => admin_pdf_email_alerts_path,
+                        'Creating new Pdf Email Alert' => new_admin_pdf_email_alert_path }
+
+= simple_form_for [:admin, @pdf_email_alert], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-body
+    = f.input :user_groups, collection: User.user_groups.collect{|key, val| [key.humanize, val]}, input_html: { multiple: 'multiple', 'data-custom-select' => true, class: 'select2me' }
+    = f.input :greeting_message, as: :text, input_html: { rows: 10, value: @pdf_email_alert.greeting_message || SiteSetting.find_by(code: 'greeting_message').try(:value) }
+
+  = form_buttons f, cancel_path: admin_pdf_email_alerts_path, submit_label: 'Next'

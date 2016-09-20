@@ -1,0 +1,35 @@
+.slider-part
+  .top-stories-slider(top-stories-slider)
+    ul.slides
+      - @top_posts.each do |post|
+        - if post
+          li
+            .img-container
+              - if post.cover.path
+                = image_tag post.cover.url(:main)
+              .overlay
+            - if post.visible_for? @user
+              = link_to post_path(post), class: 'slide-link' do
+                .link-content
+                  span.tag
+                    | Top Stories
+                  span.title
+                    = post.headline
+                  i.icon.icon-arrow-right
+            - else
+              = link_to '', class: 'slide-link slide-locked', data: {'not-signed-in' => ''} do
+                = image_tag 'lock-icon.svg', class: 'locked-icon slider-locked-icon'
+                .link-content
+                  span.tag
+                    | Top Stories
+                  span.title= post.headline
+                  i.icon.icon-arrow-right
+
+  - if @breaking_news_post.present?
+    .breaking-news
+      .title
+        | Breaking news
+      - headline = @breaking_news_post.headline || ''
+      = link_to headline, post_path(@breaking_news_post), class: "news #{'long' if headline.length > 60}"
+      /a.close-link href="#"
+        i.icon.icon-close

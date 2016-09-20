@@ -1,0 +1,5 @@
+- content_for(:title) { @author.name }
+.authors-page
+  h1.header = @author.name
+
+  = render partial: 'posts/post', collection: @posts

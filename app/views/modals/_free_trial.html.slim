@@ -1,0 +1,15 @@
+#modal-free-trial.modal.free-trial-modal(data-free-trial-modal)
+  .modal-inner
+    .modal-header
+      a.close-btn(href="#" data-close-modal)
+        i.icon.icon-close
+      h2
+        span.blue
+          | Sign Up
+        | for Free Trial
+    .modal-body
+      p Please fill in your information below for your free 30-day-trial of MNI Euro Insight’s premium content.
+      p You will also receive free email alerts when new reports are published on the website and our weekly policy review email newsletter.
+      p
+
+      = render 'users/form', user_group: 'trial_registrant'

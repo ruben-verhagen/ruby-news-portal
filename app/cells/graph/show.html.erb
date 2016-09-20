@@ -1,0 +1,15 @@
+<div class="scale">
+  <canvas data-graph-canvas width="<%= @width %>px" height="<%= @width*0.6 %>px"
+          data-back-color="<%= darken_color(@fill_color) %>" data-scale-color="<%= @fill_color %>" data-value="<%= @normalized_value %>"></canvas>
+
+  <svg class="arrow" width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(<%= @angel %>deg);-webkit-transform: rotate(<%= @angel %>deg)">
+    <path fill="<%= @fill_color %>" d="M3.269,6.89 C7.423,2.557 24.301,0.322 24.301,0.322 C24.301,0.322 22.711,17.356 18.558,21.69 C14.405,26.023 7.614,26.223 3.392,22.136 C-0.829,18.05 -0.885,11.223 3.269,6.89 L3.269,6.89 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+  </svg>
+
+  <div class="number" style="color: <%= darken_color(@fill_color) %>"><%= number_to_human(@value) %></div>
+
+
+  <span class="value min-value"><%= @labels ? 'Worse' : @min_value %></span>
+  <span class="value max-value"><%= @labels ? 'Better' : @max_value %></span>
+</div>
+

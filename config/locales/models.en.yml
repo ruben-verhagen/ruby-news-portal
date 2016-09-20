@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    attributes:
+      all: &defaults
+
+      post:
+        <<: *defaults
+        published: Published?
+        published_at: Publication date

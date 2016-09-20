@@ -1,0 +1,14 @@
+.scroll-block.left-sidebar
+  /= widget :top_lede, :sidebar
+
+  ul#sidebar-tabs.section-nav(role="tablist")
+    li.active
+      a(data-toggle="tab" href="#editors-pick-tab") Editor's Picks
+    li
+      a(data-toggle="tab" href="#top-stories-tab") Top Stories
+
+  .tab-content
+    #editors-pick-tab.tab-pane.active
+      = widget :editors_pick
+    #top-stories-tab.tab-pane
+      = widget :top_stories, :sidebar

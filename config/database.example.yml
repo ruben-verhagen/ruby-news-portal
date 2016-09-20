@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  timeout: 5000
+
+development:
+  <<: *default
+
+  database: mni_development
+
+test:
+  <<: *default
+  database: mni_test
+
+production:
+  <<: *default
+  database: mni_production

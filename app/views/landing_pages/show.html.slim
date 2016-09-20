@@ -1,0 +1,7 @@
+- content_for(:title)             { @landing_page.title }
+- content_for(:meta_description)  { @landing_page.meta_description }
+- if @landing_page.center_column_content.present?
+  = @landing_page.center_column_content.html_safe
+p Please complete the short form below to reserve your seat now:
+.form-container
+  = render 'form'

@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    h3.page-title
+      i.fa.header-icon.fa-bullhorn
+      '
+      ' Sales Managers
+      small management
+
+    ul.page-breadcrumb.breadcrumb
+      li.btn-group
+        = link_to new_admin_sales_manager_path, class: 'btn btn-primary blue' do
+          i class="fa fa-plus"
+          span Add new sales manager
+      li
+        i class="fa fa-home"
+        '
+        = link_to 'Dashboard', admin_path
+      - breadcrumbs.each do |name, path|
+        li
+          '
+          i class="fa fa-angle-right"
+          '
+          = link_to raw(name), path
+.row
+  .col-md-12
+    = render 'flash_messages'

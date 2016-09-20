@@ -1,0 +1,5 @@
+- if @landing_page.right_column_content.present?
+  = @landing_page.right_column_content.html_safe
+- if @post
+  p Related news
+  = link_to(@post.headline, post_url(@post))

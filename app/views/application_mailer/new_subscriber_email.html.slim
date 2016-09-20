@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta content="texthtml; charset=UTF-8" http-equiv="Content-Type"
+    style td { padding: 5px }
+  head
+  body
+    h1
+      | New #{@user.email_registrant? ? 'registrant' : 'subscriber' } details
+  body
+    table
+      tr
+        td Type
+        td = @user.user_group.try(:humanize)
+      tr
+        td First name
+        td = @user.first_name
+      tr
+        td Last name
+        td = @user.last_name
+      tr
+        td Title
+        td = @user.title
+      tr
+        td Company Name
+        td = @user.company
+      tr
+        td Telephone number
+        td = @user.phone_number
+      tr
+        td E-mail
+        td = @user.email
+
+      - if @user.country.present?
+        tr
+          td Country
+          td = @user.country

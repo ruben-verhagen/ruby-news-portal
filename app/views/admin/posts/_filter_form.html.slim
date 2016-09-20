@@ -1,0 +1,8 @@
+.filter-form.row
+  = simple_form_for @q, url: admin_posts_path, method: :get do |f|
+    .col-md-8
+      = f.input :headline_or_byline_or_content_or_tags_name_cont, input_html: {class: 'form-control input'}, placeholder: 'Search by headline, readout, content, tag', label: false, required: false
+    .col-md-2
+      = f.input :visibility_cont, input_html: {class: 'form-control input'}, label: false, collection: Post.visibilities, required: false, include_blank: 'Visibility'
+    .col-md-2
+      = f.submit 'Filter', class: 'btn btn btn-success submit-button'

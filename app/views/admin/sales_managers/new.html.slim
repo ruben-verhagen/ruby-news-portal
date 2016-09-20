@@ -1,0 +1,6 @@
+= render 'header_and_breadcrumbs',
+         breadcrumbs: { 'Sales managers' => admin_sales_managers_path,
+                        'Creating new sales manager' => new_admin_sales_manager_path }
+
+h1.page-title New sales manager
+= render 'form'

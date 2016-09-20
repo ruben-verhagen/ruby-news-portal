@@ -1,0 +1,8 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Posts' => admin_posts_path,
+                 "#{truncate(@post.headline, length: 36)}" => edit_polymorphic_path([:admin, @post]),
+                 'Tweeting' => admin_post_twitter_alerts_path(@post) }, post: @post
+
+h1.page-title= "Tweeting ' #{@post.headline} '"
+= render 'form_tabs', post: @post
+= render 'twitter_form'

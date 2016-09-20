@@ -1,0 +1,6 @@
+$('.news-list').append('<%= escape_javascript(render partial: 'post', collection: @posts)%>');
+
+$('a.load-more-posts').attr('href', '<%= @next_page_path %>');
+<% unless @posts.next_page %>
+    $('.load-more-posts-container').remove();
+<% end %>

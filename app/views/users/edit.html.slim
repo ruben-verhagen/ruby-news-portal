@@ -1,0 +1,18 @@
+- content_for(:title)             { 'Settings' }
+article.user-settings
+  header
+    h1 Settings
+    .back-button
+      = link_to 'Back', :back
+  .clearfix
+
+  = simple_form_for @user do |form|
+    = form.simple_fields_for :user_setting do |us|
+      .row
+        .email-label Your E-mail Address
+        .inline-field.email-field
+          .email = @user.email
+        .inline-field.email-alerts-field
+          = us.input :email_alerts, inline_label: 'Would you like to receive email alerts?', label: false
+      .clearfix
+    = form.submit 'Save Settings', class: 'btn btn-transparent'

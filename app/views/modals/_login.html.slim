@@ -1,0 +1,12 @@
+#modal-login.modal.login-modal(data-login-modal)
+  .modal-inner
+    .modal-header
+      a.close-btn(href="#" data-close-modal)
+        i.icon.icon-close
+      h2
+        span.blue
+          | Login to
+        | MNI Euro Insight
+    .modal-body
+      br
+      => link_to 'Login', new_user_session_path, class: 'btn-blue'

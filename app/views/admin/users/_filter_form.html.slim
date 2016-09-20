@@ -1,0 +1,12 @@
+.filter-form.row
+  = simple_form_for @q, url: admin_users_path, method: :get do |f|
+    .col-md-9
+      = f.input :first_name_or_last_name_or_email_or_phone_number_or_company_cont, as: :string, label: false, placeholder: 'Search for user name, email, company name, phone number', required: false
+    .col-md-2
+      = f.input :user_group_eq, label: false, collection: User.user_groups.collect { |key, val| [key.humanize, val] }, include_blank: '- User group -', input_html: { class: 'form-control'}, required: false
+    /.col-md-2
+      = f.input :created_at_gteq, as: :string, input_html: { value: ltime(f.object.created_at_gteq), class: 'datepicker form-control', 'data-datetime-picker' => true }, label: false, placeholder: 'Added Date from', required: false
+    /.col-md-2
+      = f.input :created_at_lteq, as: :string, input_html: { value: ltime(f.object.created_at_lteq), class: 'datepicker form-control', 'data-datetime-picker' => true }, label: false, placeholder: 'Added Date to', required: false
+    .col-md-1
+      = f.submit 'Filter', class: 'btn btn-success submit-button'

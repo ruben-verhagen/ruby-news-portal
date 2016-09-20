@@ -1,0 +1,12 @@
+= render 'admin/email_alerts/header_and_breadcrumbs'
+
+= simple_form_for @email_alert, url: admin_email_alert_common_settings_path(@email_alert), method: :put, html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-wizard
+    .form-body
+      = render 'form_progressbar', step: @step, alert: @email_alert
+      = f.input :user_groups, collection: User.user_groups.collect{|key, val| [key.humanize, val]}, input_html: { multiple: 'multiple', 'data-custom-select' => true, class: 'select2me' }
+      = f.input :post_ids, collection: @posts, label_method: :headline_with_alerted_mark, value_method: :id, as: :media_list, label: 'Posts', input_html: { thumb_method: :cover, version: :thumb }
+      .form-actions.fluid
+        .col-md-offset-2.col-md-10
+          = f.submit 'Go Next', class: 'btn btn-lg btn-success'
+          = link_to('Cancel', admin_email_alerts_path, class: 'btn btn-lg default')

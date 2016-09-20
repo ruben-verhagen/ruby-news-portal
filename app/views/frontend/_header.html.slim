@@ -1,0 +1,28 @@
+header#header
+  .header-bottom
+    .container
+      .left-block
+        = widget :menu, :sidebar
+        = link_to 'Euro Insight', root_url, class: 'logo-block'
+      .middle-block
+        = form_for @search_filter, method: :get, as: :search_filter, url: search_url, html: { class: 'search-form' } do |f|
+          = f.text_field :search_query, class: 'search', placeholder: 'Search'
+          = f.submit '', class: 'search-button'
+
+      .right-block
+        = link_to 'http://www.mds.deutsche-boerse.com/mds-en', target: '_blank' do
+          = image_tag 'logo-mni-small.png'
+  .header-last
+    .nav-block.mobile-hide 
+      = link_to 'Contact', page_url(slug: 'contact')
+      = link_to 'About Us', page_url(slug: 'about-us')
+
+      - if user_signed_in?
+        = link_to 'Profile', edit_user_url, class: 'login'
+        = link_to 'Logout', destroy_user_session_url, class: 'login'
+      - else
+        => link_to 'Login', new_user_session_url, class: 'login'
+        a.subscribe(href="#" data-open-free-trial-modal) Sign Up
+
+
+    = widget :ticker

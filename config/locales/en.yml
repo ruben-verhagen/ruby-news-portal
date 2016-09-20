@@ -1,0 +1,11 @@
+en:
+  time:
+    formats:
+      front: "%^a %e %b %Y"
+      long: "%H:%M | %B %e, %Y"
+      time: "%H:%M"
+      short: "%b %d.%Y"
+      literal: "%A, %B %e, %Y"
+      post_list: "%H:%M, %e-%m-%Y"
+      post_edit: "%Y-%m-%d %H:%M"
+      sitemap: '%Y-%m-%d'

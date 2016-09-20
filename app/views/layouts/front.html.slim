@@ -1,0 +1,33 @@
+doctype html
+html ng-app="FrontApp"
+  head
+    = render 'frontend/meta_tags'
+    = stylesheet_link_tag    'frontend', media: 'screen'
+    = stylesheet_link_tag    'frontend-print', media: 'print'
+    = javascript_include_tag 'frontend'
+    = Gon::Base.render_data({})
+    = csrf_meta_tags
+
+  body
+    = render 'frontend/header'
+
+    main
+      a.show-link.js-show-link href="#"
+        span
+          | TAP
+      .container
+        .left-block.fix-height.js-fix-height
+          = render 'frontend/sidebar'
+        .middle-block.clear
+          = yield
+
+        .right-block
+          = widget :euro_poll, :sidebar
+          = widget :opinions, :sidebar
+          = widget :euro_cal, :sidebar
+          = widget :sections, :sidebar
+
+    = render 'frontend/footer'
+
+    = render 'frontend/helpers'
+    = render 'frontend/stats'

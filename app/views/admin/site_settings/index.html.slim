@@ -1,0 +1,20 @@
+= render 'header_and_breadcrumbs'
+
+.row.site-settings ng-controller="SiteSettingsController"
+  .col-md-6
+    h3.form-section Base Configuration
+
+    dl(ng-repeat="setting in siteSettings")
+      dt() {{ setting.name }}:
+      dd editable-textarea="setting.value" e-placeholder="Enter {{setting.name}} please" onaftersave="setting.save()" {{ setting.value || 'Enter ' + setting.name + ' here' }}
+
+  .col-md-6
+    h3.form-section
+      | Twitter auto-posting
+    .twitter-accounts
+      - @twitter_accounts.each do |account|
+        .twitter-account
+          = link_to 'Disconnect', remove_twitter_path(account), method: :delete, class: 'btn btn-sm btn-warning'
+          span = link_to account.username, account.url, target: '_blank'
+    .connect
+      = link_to 'Add new twitter account', twitter_auth_path, class: 'btn btn-success btn-lg'

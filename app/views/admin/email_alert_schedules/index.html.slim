@@ -1,0 +1,40 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Automatic Email Alerts schedule' => admin_email_alert_schedules_path }
+- if @schedules.any?
+  table.table.table-striped.table-hover.table-events
+    thead
+      tr
+        th Day of week
+        th Send at
+        th User groups
+        th.expanded-actions Actions
+    tbody
+      - @schedules.each do |schedule|
+        - edit_path = edit_admin_email_alert_schedule_path(schedule)
+        tr.gradeX
+          td
+            ' Every
+            = schedule.days_of_week.map {|day| EmailAlertSchedule.human_day_of_week(day) }.join(', ')
+          td = link_to l(schedule.send_at, format: :time), edit_path
+          td = schedule.user_groups.map(&:humanize).join(', ')
+
+          td.actions
+            = link_to admin_email_alert_schedule_path(schedule), class: 'btn default btn-xs blue'
+              i.fa.fa-eye>
+              | Show
+
+            '
+            = link_to edit_path, class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Edit
+
+            '
+            = link_to admin_email_alert_schedule_path(schedule), class: 'btn default btn-xs', method: :delete, data: {confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o>
+              | Delete
+
+  .pagination-container.clearfix
+    = paginate_list @schedules
+    = paginate_per
+- else
+  .no-items
+    p There are no Automatic Email Alerts

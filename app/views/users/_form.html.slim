@@ -1,0 +1,35 @@
+- user_group ||= 'trial_registrant'
+
+div(data-subscriber-form-wrapper)
+  = form_for @new_user, url: user_path, method: :post, remote: true, html: { class: 'modal-form subscribe-form' } do |f|
+    .form-title
+      span.number 1s
+      span.title Enter Your information
+    - if flash[:error].present?
+      p.errors = flash[:error]
+    fieldset
+      = f.text_field :first_name, required: true, class: "base-input #{'error' if @new_user.errors[:first_name].any?}", placeholder: 'First Name'
+      = f.text_field :last_name, required: true, class: "base-input #{'error' if @new_user.errors[:last_name].any?}", placeholder: 'Last Name'
+
+      = f.text_field :title,  class: "base-input #{'error' if @new_user.errors[:title].any?}", placeholder: 'Title'
+      = f.text_field :company, required: true, class: "base-input #{'error' if @new_user.errors[:company].any?}", placeholder: 'Company Name'
+      = f.text_field :phone_number, required: true, class: "base-input #{'error' if @new_user.errors[:phone_number].any?}", placeholder: 'Telephone number'
+      = f.email_field :email, required: true, class: "base-input #{'error' if @new_user.errors[:email].any?}", placeholder: 'E-mail'
+      = f.text_field :country, required: true, placeholder: 'Country', class: "base-input country #{'error' if @new_user.errors[:country].any?}"
+
+      div.checkbox-input
+        = f.fields_for :user_setting, (@new_user.user_setting || @new_user.build_user_setting) do |settings_builder|
+          label.checkbox-label
+            = settings_builder.check_box :cookie
+            span class="#{'error' if @new_user.errors[:"user_setting.cookie"].any?}"
+              ' I accept
+              = link_to 'Terms & Conditions ', page_path(Page.find_by(code: 'terms')), target: '_blank'
+              ' including the
+              = link_to 'cookie policy', page_path(Page.find_by(code: 'policy')) + "#cookie", target: '_blank'
+
+      = f.hidden_field :user_group, value: user_group
+
+    - if user_group == 'trial_registrant'
+      = f.submit 'Sign Up', class: 'btn-blue'
+    - else
+      = f.submit 'Register', class: 'btn-blue'

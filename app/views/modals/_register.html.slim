@@ -1,0 +1,12 @@
+#modal-register.modal.register-modal(data-register-modal)
+  .modal-inner
+    .modal-header
+      a.close-btn(href="#" data-close-modal)
+        i.icon.icon-close
+      h2
+        span.blue
+          | Registration
+        | Sign Up
+    .modal-body
+      p Please fill out the information below to receive free email alerts for 30 days when MNI Euro Insight is updated.
+      = render 'users/form', user_group: 'email_registrant'

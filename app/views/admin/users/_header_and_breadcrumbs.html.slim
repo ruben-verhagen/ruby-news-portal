@@ -1,0 +1,17 @@
+
+h3.page-title
+  i.fa.header-icon.fa-group>
+  | Users
+
+ul.page-breadcrumb.breadcrumb
+  li
+    i.fa.fa-home>
+    = link_to 'Dashboard', admin_path
+  - breadcrumbs.each do |name, path|
+    li
+      '
+      i class="fa fa-angle-right"
+      '
+      = link_to raw(name), path
+
+= render 'flash_messages'

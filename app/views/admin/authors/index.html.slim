@@ -1,0 +1,31 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Posts sections' => admin_authors_path}
+
+- if @authors.any?
+  table.table.table-striped.table-hover.table-posts-sections
+    thead
+      tr
+        th.id Id
+        th Name
+        th Actions
+    tbody
+      - @authors.each do |author|
+        - edit_path = edit_admin_author_path(author)
+        tr.odd.gradeX
+          td.id= author.id
+          td= link_to author.name, edit_path
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple' do
+              i.fa.fa-edit
+              '
+              | Edit
+
+            '
+            = link_to admin_author_path(author), class: 'btn default btn-xs black',
+                                             method: :delete,  data: { confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o
+              '
+              | Delete
+- else
+  .no-items
+    p There are no authors

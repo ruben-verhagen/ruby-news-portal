@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'mni';
+  src: asset-url('mni.eot');
+  src: asset-url('mni.eot?#iefix') format('embedded-opentype'),
+  asset-url('mni.woff') format('woff'),
+  asset-url('mni.ttf') format('truetype'),
+  asset-url('mni.svg#mni') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'NewsGothic';
+  src: asset-url('NewsGothic-Thin.eot');
+  src: asset-url('NewsGothic-Thin.eot?#iefix') format('embedded-opentype'),
+  asset-url('NewsGothic-Thin.woff') format('woff'),
+  asset-url('NewsGothic-Thin.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'NewsGothic';
+  src: asset-url('NewsGothic-Regular.eot');
+  src: asset-url('NewsGothic-Regular.eot?#iefix') format('embedded-opentype'),
+  asset-url('NewsGothic-Regular.woff') format('woff'),
+  asset-url('NewsGothic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NewsGothic';
+  src: asset-url('NewsGothic-Bold.eot');
+  src: asset-url('NewsGothic-Bold.eot?#iefix') format('embedded-opentype'),
+  asset-url('NewsGothic-Bold.woff') format('woff'),
+  asset-url('NewsGothic-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "mni";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: auto;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+}
+ 
+.icon-menu:before { content: '\e800'; } /* '' */
+.icon-twitter:before { content: '\e801'; } /* '' */
+.icon-mouse:before { content: '\e802'; } /* '' */
+.icon-facebook:before { content: '\e803'; } /* '' */
+.icon-gplus:before { content: '\e804'; } /* '' */
+.icon-linkedin:before { content: '\e805'; } /* '' */
+.icon-subscribe:before { content: '\e806'; } /* '' */
+.icon-arrow-right:before { content: '\e807'; } /* '' */
+.icon-people:before { content: '\e808'; } /* '' */
+.icon-search:before { content: '\e809'; } /* '' */
+.icon-add:before { content: '\e80a'; } /* '' */
+.icon-tower:before { content: '\e80b'; } /* '' */
+.icon-close:before { content: '\e80c'; } /* '' */
+.icon-time:before { content: '\e80d'; } /* '' */
+.icon-people-1:before { content: '\e80e'; } /* '' */
+.icon-arrow-left:before { content: '\e80f'; } /* '' */
+.icon-clock:before { content: '\e810'; } /* '' */
+.icon-angle-down:before { content: '\e811'; } /* '' */
+.icon-lock-empty:before { content: '\e812'; } /* '' */
+.icon-home-outline:before { content: '\e813'; } /* '' */
+.icon-angle-right:before { content: '\e814'; } /* '' */

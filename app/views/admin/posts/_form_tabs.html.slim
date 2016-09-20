@@ -1,0 +1,8 @@
+.tabbable-custom.nav-justified
+  ul.nav.nav-tabs.nav-justified role="tablist"
+    = active_link_to 'General info', edit_admin_post_path(post), wrap_tag: :li
+    - if post.published?
+      = active_link_to 'Twitter alerts', admin_post_twitter_alerts_path(post), wrap_tag: :li
+    - else
+      li.disabled
+        a Twitter alerts are disabled until you publish the article

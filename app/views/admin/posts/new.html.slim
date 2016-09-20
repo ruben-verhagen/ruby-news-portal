@@ -1,0 +1,6 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Posts' => admin_posts_path,
+                 'Creating new post' => new_admin_post_path }
+
+h1.page-title New post
+= render 'form'

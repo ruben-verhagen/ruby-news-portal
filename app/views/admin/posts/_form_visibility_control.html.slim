@@ -1,0 +1,15 @@
+
+
+- options = { green: 'Green – visible for everyone',
+              yellow: 'Yellow – visible for premium subscribers immediately, visible for everyone in 48 hours after publication',
+              red: 'Red - visible for premium subscribers immediately, visible for everyone in 7 days after publication',
+              silver: 'Silver – visible only from for premium subscribers' }
+
+.form-group.radio_buttons.optional.post_visibility
+  label.radio_buttons.optional.col-sm-2.control-label Visibility
+  .col-sm-9
+    - options.each do |type, label|
+      span.radio class="#{type}"
+        label for="post_visibility_#{type}" name="post[visibility]"
+          input.radio_buttons.optional.form-control(name="post[visibility]" type="radio" value="#{type}" *(@post.visibility == type.to_s ? {checked: 'checked'} : {}))
+          = label

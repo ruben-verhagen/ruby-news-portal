@@ -1,0 +1,21 @@
+footer#footer
+  table.row
+    tr
+      td.left
+        /= link_to 'Contact', page_path(slug: 'contact')
+
+        = link_to 'Deutsche Börse Group websites', 'http://www.mds.deutsche-boerse.com/mds-en', target: '_blank'
+      td.center
+        span
+          ' &copy; Deutsche Börse Group
+          = Date.today.year
+        = link_to 'Privacy Policy', 'http://deutsche-boerse.com/dbg/dispatch/en/kir/dbg_nav/home?displayText=footerPrivacy', target: '_blank'
+
+      td.right
+        .social-buttons
+          = link_to '', '#',  class: 'social-button linkedin', onClick: "SocialSharer.shareToLi('#{request.url}', '#{yield(:title)}')"
+          = link_to '', '#',  class: 'social-button twitter', onClick: "SocialSharer.shareToTw('#{request.url}', '#{yield(:title)}')"
+          = link_to '', '#',  class: 'social-button xing', onClick: "SocialSharer.shareToXing('#{request.url}')"
+  .bottom-links
+    .left
+    .right

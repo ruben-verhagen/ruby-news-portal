@@ -1,0 +1,72 @@
+= simple_form_for [:admin, @post], html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |f|
+  .form-body
+
+    = render 'form_visibility_control', f: f
+
+    = f.input :published, as: :boolean, label: 'Published?'
+    = f.input :published_at, as: :string, label: 'Publication date & time', input_html: { value: (l(@post.published_at, format: :post_edit) if @post.published_at), class: 'datepicker', 'data-datetime-picker' => true }
+
+    = f.association :post_sections, input_html: { 'data-custom-select' => true, class: 'select2me' }
+    = f.association :authors, input_html: { 'data-authors-picker' => true }, hint: 'Move needed authors to the right column'
+    = f.input :author_ids_ordered, as: :hidden, input_html: { value: @post.authors.pluck(:id).join(',') }
+
+    = f.input :countries, as: :select, collection: EuroCountry.select_data, input_html: { placeholder: 'Please select country', 'data-custom-select' => true, multiple: true, class: 'select2me' }
+
+    = f.input :tag_list, input_html: { 'data-tag-list' => ActsAsTaggableOn::Tag.pluck(:name).to_json }
+
+    h2.form-section Content
+    = f.input :headline
+    = f.input :byline, as: :text, input_html: {rows: 6}, label: 'Readout'
+    = f.input :content, as: :ckeditor, input_html: {rows: 32}
+
+    h2.form-section Cover
+    = f.input :cover, as: :image, input_html: {version: :thumb}
+    - unless @post.cover.blank?
+      = f.input :remove_cover, as: :boolean
+    = f.input :cover_description, as: :text
+    = f.input :cover_credits
+
+    h2.form-section Video
+
+    = f.input :video_mp4, as: :file
+    = f.input :video_webm, as: :file
+
+    - if @post.video_mp4.path && @post.video_webm.path
+      .row
+        .col-md-2
+        .col-md-10
+          video.video-js(width="200" height="150" preload="true")
+            source src="#{@post.video_mp4.url}" type="video/mp4"
+            source src="#{@post.video_webm.url}" type="video/webm"
+
+    h2.form-section Positioning
+
+    = f.input :rank_position, as: :integer, label: 'Position', hint: '0 is the highest, bigger number - lower position. 0 by default',
+              input_html: { min: 0, max: 100_000 }
+
+    = f.input :authors_pick, as: :boolean, label: "Author's pick?"
+    = f.input :in_carousel
+    = f.input :carousel_rank_position, label: 'Carousel position', hint: '0 is the highest, bigger number - lower position. 0 by default', input_html: { min: 0, max: 100_000 }
+    /= f.input :featured_level, collection: [['Not in carousel', nil], ['1st slide', 1],['2nd slide', 2], ['3rd slide', 3], ['4th slide', 4], ['5th slide', 5]],
+              label: 'Carousel Position', html_options: { class: 'radio-list' }, checked: nil,
+              hint: 'Stories with set importance level will appear in the carousel'
+
+    = f.input :in_digest, as: :boolean, label: 'In PDF?', hint: 'Marked posts will appear in weekly briefing PDF'
+    = f.input :in_ticker, as: :boolean
+    /= f.input :top_lede, as: :boolean, label: 'Is top lede?'
+    = f.input :is_breaking_news, as: :boolean, label: 'In breaking news?'
+    = f.input :in_automatic_email, as: :boolean, label: 'Include into automatic email alert?'
+
+
+    h2.form-section SEO
+    = f.input :seo_title
+    = f.input :seo_keywords
+    = f.input :seo_description, as: :text
+
+
+  .form-actions.fluid
+    .col-md-offset-2.col-md-10
+      = f.button :submit, 'Save', class: 'green'
+      = f.button :submit, 'Preview', class: 'btn-primary'
+      = f.button :submit, 'Publish', class: 'purple'
+      = link_to 'Cancel', admin_posts_path, class: 'btn btn-lg default'

@@ -1,0 +1,22 @@
+= render 'admin/email_alerts/header_and_breadcrumbs'
+
+= simple_form_for @email_alert, url: admin_email_alert_custom_texts_path(@email_alert), method: :put, html: { class: 'form form-horizontal' }, wrapper: :horizontal_form do |email_alert_form|
+  .form-wizard
+    .form-body
+      = render 'form_progressbar', step: 2, alert: @email_alert
+      = email_alert_form.input :subject
+      = email_alert_form.input :greeting_message, as: :text, input_html: { rows: 10, value: @email_alert.greeting_message || SiteSetting.find_by(code: 'greeting_message').try(:value) }
+
+      hr
+      .row
+      = email_alert_form.simple_fields_for :email_alerts_posts do |post_builder|
+        h4.text-center
+          = link_to(post_builder.object.post.headline, edit_admin_post_path(post_builder.object.post), target: '_blank')
+        = post_builder.input :headline, as: :text, label: 'Headline', input_html: {value: post_builder.object.headline || post_builder.object.post.headline}
+        = post_builder.input :description, as: :text, label: 'Readout', input_html: {value: post_builder.object.description || post_builder.object.post.byline, rows: 4, class: 'col-md-5'}
+        hr
+
+      .form-actions.fluid
+        .col-md-offset-2.col-md-10
+          = email_alert_form.submit 'Send email alert', class: 'btn btn-lg btn-success'
+          = link_to('Cancel', admin_email_alerts_path, class: 'btn btn-lg default')

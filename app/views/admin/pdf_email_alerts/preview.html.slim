@@ -1,0 +1,34 @@
+= render 'header_and_breadcrumbs',
+         breadcrumbs: { 'Pdf Email Alerts' => admin_pdf_email_alerts_path,
+                        'Preview Pdf Email Alert' => preview_admin_pdf_email_alert_path(@pdf_email_alert) }
+
+h3.section-name Common info
+.row
+  .col-md-2 Greeting message:
+  .col-md-10
+    == prepare_for_html(@pdf_email_alert.greeting_message.html_safe)
+.row
+  .col-md-2 User groups:
+  .col-md-10
+    = @pdf_email_alert.user_groups.map(&:humanize).join(', ')
+.row
+  .col-md-2 Status:
+  .col-md-10
+    = @pdf_email_alert.status
+
+.row
+  .col-md-2 Last action at:
+  .col-md-10
+    = l(@pdf_email_alert.updated_at, format: :post_edit)
+
+.row
+  .col-md-2 Pdf:
+  .col-md-10
+    = link_to 'Preview', @pdf_email_alert.file.url, target: '_blank', class: 'btn btn-xs purple'
+
+.form-actions.fluid
+  .col-md-offset-2.col-md-10
+    - if @pdf_email_alert.ready?
+      = link_to 'Send', send_admin_pdf_email_alert_path(@pdf_email_alert), class: 'btn btn-success btn-lg', method: :put
+    - else
+      p This email alert has already been sent

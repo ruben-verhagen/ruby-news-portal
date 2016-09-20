@@ -1,0 +1,14 @@
+- content_for(:title) { 'Search' }
+.search-page
+  h1 Search Results
+  .news-list
+    = render partial: 'post', collection: @posts
+
+  - if @posts.next_page
+    .load-more-posts-container
+      = render 'frontend/posts_loader'
+      = link_to 'Load More Posts', @next_page_path, class: 'load-more-posts', remote: true
+
+  - unless @posts.any?
+    .no-items
+      p There are no search results

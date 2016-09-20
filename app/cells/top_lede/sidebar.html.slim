@@ -1,0 +1,9 @@
+- if @post.visible_for? @user
+  = link_to post_path(@post), class: 'blockquote-block' do
+    = @post.headline
+    span.author= l @post.published_at, format: :short
+- else
+  = link_to '', class: 'blockquote-block', data: {'not-signed-in' => ''} do
+    = @post.headline
+    = image_tag 'lock-icon.svg', class: 'locked-icon', width: '16px'
+    span.author= l @post.published_at, format: :short

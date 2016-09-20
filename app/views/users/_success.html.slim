@@ -1,0 +1,11 @@
+- if @new_user.trial_registrant?
+  javascript:
+    window.PopupsManager.closeAllModals();
+    window.PopupsManager.thanksTrialModal.open();
+- else
+  javascript:
+    window.PopupsManager.closeAllModals();
+    window.PopupsManager.thanksRegisterModal.open();
+
+- @new_user = User.new
+= render 'users/form'

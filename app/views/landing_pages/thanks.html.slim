@@ -1,0 +1,4 @@
+- content_for(:title)             { @landing_page.title }
+- content_for(:meta_description)  { @landing_page.meta_description }
+- if @landing_page.thanks_content.present?
+  = @landing_page.thanks_content.html_safe

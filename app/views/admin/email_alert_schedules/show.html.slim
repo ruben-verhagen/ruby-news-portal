@@ -1,0 +1,27 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Automatic email alerts schedule' => admin_email_alert_schedules_path,
+                 "Statistics for <small>'##{@schedule.id}' at #{@schedule.name}</small>" => admin_email_alert_schedule_path(@schedule) }
+
+h3.section-name Common info
+.row
+  .col-md-2 Greeting message:
+  .col-md-10
+    = @schedule.greeting_message
+.row
+  .col-md-2 User groups:
+  .col-md-10
+    = @schedule.user_groups.map(&:humanize).join(', ')
+
+h3.section-name Statistics for #{Date.today.strftime("%B %Y")}
+- @automatic_alerts.each do |alert|
+  h4 = l(alert.created_at, format: :long)
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th Date
+        th Post
+    tbody
+      - alert.posts.each do |post|
+        tr.odd.gradeX
+          td = l(post.published_at, format: :long)
+          td= link_to post.headline, edit_admin_post_path(post)

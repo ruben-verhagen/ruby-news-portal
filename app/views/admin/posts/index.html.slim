@@ -1,0 +1,57 @@
+= render 'header_and_breadcrumbs', breadcrumbs: {'Posts' => admin_posts_path }
+
+= render 'filter_form'
+- if @posts.any?
+  table.table.table-striped.table-hover.table-posts
+    thead
+      tr
+        th = sort_link(@q, :published)
+        th.preview Cover
+        th.w-140 = sort_link(@q, :published_at)
+        th.w-240 Headline
+        th Tags
+        th Sections
+        th Authors
+        th.actions Actions
+    tbody
+      - @posts.each do |post|
+        - edit_path = edit_admin_post_path(post)
+        tr.gradeX class="visibility-#{post.visibility}"
+          td.center
+            - icon_class = post.published ? 'yes' : ''
+            i.fa.fa-check.icon-yes-no class="#{icon_class}"
+
+          td.preview
+            - if post.cover.path
+              = image_tag post.cover.thumb.url if post.cover.path
+            - else
+              = image_tag 'admin/post-cover-placeholder.png'
+          td
+            -if post.published_at
+              = l(post.published_at, format: :post_list)
+          td = link_to truncate(post.headline, length: 80), edit_path
+          td = post.tag_list
+          td
+            - section_names = post.post_sections.select(:name).map(&:name)
+            - if section_names.any?
+              = link_to section_names.join(', '), edit_path
+          td
+            - if post.authors.any?
+              = link_to post.author_names, edit_path
+
+          td.actions
+            = link_to edit_path, class: 'btn default btn-xs purple'
+              i.fa.fa-edit>
+              | Edit
+
+            '
+            = link_to admin_post_path(post), class: 'btn default btn-xs', method: :delete, data: {confirm: 'Are you sure?'} do
+              i.fa.fa-trash-o>
+              | Delete
+
+  .pagination-container.clearfix
+    = paginate_list @posts
+    = paginate_per
+- else
+  .no-items
+    p There are no posts

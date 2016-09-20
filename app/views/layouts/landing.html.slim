@@ -1,0 +1,25 @@
+doctype html
+html ng-app="FrontApp"
+  head
+    = render 'frontend/meta_tags'
+    = stylesheet_link_tag    'landing', media: 'screen'
+    = stylesheet_link_tag    'frontend-print', media: 'print'
+    = javascript_include_tag 'landing'
+    = Gon::Base.render_data({})
+    = csrf_meta_tags
+
+  body.landing
+    = render 'frontend/header'
+    main
+      .landing.container-fluid
+        article
+          .row.article-body
+
+            .col-xs-12.col-md-6.col-md-push-3.container-landing
+              = yield
+
+            .col-xs-12.col-md-3.col-md-push-3.sidebar-right
+              = widget :landing_page, :right_column_content
+
+            .col-xs-12.col-md-3.col-md-pull-9.sidebar-left
+              = widget :landing_page, :left_column_content

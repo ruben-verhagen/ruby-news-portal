@@ -1,0 +1,35 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' } ) do |f|
+
+  h3.form-title Login to your account
+
+  - if flash[:alert].present?
+    div.alert.alert-warning
+      button.close data-close="alert"
+      span= flash[:alert]
+
+
+  .form-group
+    =  f.label :email, class: 'label control-label visible-ie8 visible-ie9'
+    .input-icon
+      i.fa.fa-user
+      = f.text_field :email, autofocus: true, class: 'form-control placeholder-no-fix', placeholder: 'username'
+
+  .form-group
+    = f.label :password, class: 'control-label visible-ie8 visible-ie9'
+    .input-icon
+      i.fa.fa-lock
+      = f.password_field :password, class: 'form-control placeholder-no-fix', placeholder: 'Password', autocomplete: 'off'
+
+
+  .form-actions
+    - if devise_mapping.rememberable?
+      = f.label :remember_me, class: 'remember-me checkbox' do
+        => f.check_box :remember_me
+        ' Remember me
+
+    button.btn.green.pull-right type="submit"
+      ' Login
+      i.m-icon-swapright.m-icon-white
+
+.forget-password
+  = render 'devise/shared/links'

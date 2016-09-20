@@ -1,0 +1,473 @@
+@import pages/site_settings
+
+$white: #fff
+$black: #000
+
+$red: #e02222
+
+.w-100
+  width: 100px
+
+.w-120
+  width: 120px
+
+.w-140
+  width: 140px
+
+.w-180
+  width: 180px
+
+.w-240
+  width: 240px
+
+.page-sidebar
+
+
+
+  .sidebar-toggler
+    margin-bottom: 15px
+
+
+input.file
+  border: none !important
+
+
+.center
+  text-align: center
+
+
+.header.navbar
+  .nav-user
+    height: 42px
+    line-height: 29px
+
+  .navbar-brand
+    width: 172px
+
+    img
+      width: 140px
+
+  .navbar-cp-title
+    color: #ff6b66
+    font-family: 'Open Sans', sans-serif
+    font-weight: 300
+    font-size: 1.5em
+
+    display: inline-block
+    margin-top: -1px
+
+    padding-top: 10px
+    height: 42px
+
+    &:hover
+      text-decoration: none
+
+.header
+  .navbar-nav.pull-right
+    li
+      a
+        padding: 7px !important
+        line-height: 28px
+        color: #ccc
+        i
+          color: #ccc
+          height: 18px
+
+        &:hover
+          color: #fff
+          background: #333
+
+.footer
+  a
+    color: #aaa
+
+
+ul.page-sidebar-menu > li
+  &.open > ul
+    display: block
+    > li a.active
+      background-color: $red
+      color: $white
+
+  > a
+    border: none !important
+
+  > a.active
+    background: rgba(255, 41, 41, 0.70) !important
+
+    .arrow:before
+      color: #fff !important
+
+  i, .arrow::before
+    color: #fff !important
+
+  &.heading
+    padding: 10px 15px
+    border-bottom: 1px #555 solid
+    h3
+      color: #999
+      margin: 0
+      padding: 0
+      font-size: 17px
+      font-weight: 300
+
+.section-name
+  margin-top: 24px
+  padding-bottom: 6px
+  border-bottom: 1px #ddd solid
+
+
+.form
+  .remove-image
+    padding: 0 0 5px
+  .checkbox-list
+    margin: 6px 0 0 -5px
+
+.header-icon
+  font-size: 28px
+  line-height: 28px
+
+.table
+  thead > tr > th
+
+  thead > tr > th, tbody > tr > td
+    vertical-align: middle
+
+  .id
+    width: 40px
+
+  .expanded-actions
+    width: 210px
+    text-align: center
+  .actions
+    width: 180px
+    text-align: center
+
+    .download-as-pdf
+      background: #578ebe
+      color: #fff
+
+      i
+        color: #fff
+
+      &:hover
+        background: #5282ae !important
+
+
+  .disabled
+    color: #888
+
+    a
+      color: #888
+      &.btn
+        background-color: #eee
+
+
+.table-posts
+  tr
+    width: 100%
+    &.visibility-green
+      border-left: 3px solid green
+    &.visibility-yellow
+      border-left: 3px solid orange
+    &.visibility-red
+      border-left: 3px solid red
+    &.visibility-silver
+      border-left: 3px solid gray
+  .preview
+    width: 78px
+    padding: 4px
+    img
+      width: 70px
+  .handle
+    text-align: center
+    color: #888
+    cursor: move
+
+  .published
+    width: 80px
+    text-align: center
+
+  .icon-yes-no
+    color: #bbb
+    &.yes
+      color: rgba(84, 178, 77, 0.70)
+
+  .authors-pick
+    width: 110px
+    text-align: center
+
+
+
+.add-new-attachment-btn
+  padding: 6px 0
+  .btn
+    border: #eee 1px solid
+    color: #aaa
+
+
+.portlet-container
+  margin-bottom: 8px
+
+  .portlet.box
+    border: none
+    position: relative
+
+
+
+    .portlet-body
+      background-color: #fafaff
+      border: 1px #d0d7eb solid
+      .form-group
+        margin: 0
+
+      .actions
+        margin: -10px 0 10px -10px
+        .btn.red
+          background-color: rgba(#d84a38, 0.6)
+
+.portlet
+
+
+.samples
+  display: none
+
+.portlet-photo
+  .attachment-form
+    margin: 10px 16px 0
+
+.align-right
+  text-align: right
+
+
+.portlet-video
+  .row.file-upload
+    margin: 0 15px
+
+
+.photo-uploader
+
+
+  .thumbnail
+    position: relative
+    width: 100%
+    height: 100%
+
+    .text-fields
+      height: 100px
+      z-index: 10
+
+      .photographer
+        padding-top: 5px
+
+      input[type=text], textarea
+        max-width: 140px
+
+    .remove-button
+      position: absolute
+      right: -10px
+      top: -10px
+
+      width: 30px
+      height: 30px
+      line-height: 30px
+
+      font-size: 1.5em
+      text-align: center
+      border-radius: 15px !important
+
+      &:hover
+        cursor: pointer
+
+
+
+  .progress
+    margin-bottom: 0
+
+  .drop-zone
+    position: relative
+    text-align: center
+    $border_radius: 10px
+    border: dotted 2px #eee
+
+    input[type=file]
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      opacity: 0
+
+    .progress
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 100%
+
+    .action-caption
+      padding: 30px 20px
+      font-size: 1.4em
+      font-weight: lighter
+      color: #666
+
+      i
+        font-size: 1.8em
+
+
+.post-type-selection
+  .type
+    padding: 60px
+    background-color: #f6f6f6
+    border: 1px #eee solid
+    text-align: center
+    font-size: 1.6em
+    font-weight: lighter
+
+    i
+      font-size: 1em
+
+    a:hover
+      text-decoration: none
+      color: rgba(13, 99, 143, 0.73)
+
+.site-settings
+  margin: 0
+
+  dt
+    font-weight: normal
+    font-size: 1.2em
+
+  dd
+  .form-inline
+    width: 100% !important
+
+    .editable-controls
+      display: block
+    input, textarea
+      width: 80% !important
+
+
+.stats-widget
+  .integer
+    text-align: center
+
+.stats-portlet
+  .portlet-body
+    padding: 10px 3px 3px !important
+    padding: 10px 3px 3px !important
+
+  .nav
+    margin: 0
+    li
+      a
+        padding: 5px 8px
+
+abbr[title=required]
+  color: #d9392c
+
+.no-items
+  margin: 16px 0
+  text-align: center
+  p
+    font-size: 16px
+    color: #bbb
+
+
+h1.page-title
+  margin: 0px 0px 25px 0px
+  padding: 0 0 5px 10px
+  border-bottom: 1px solid #eee
+  font-size: 23px
+
+ul.paginate-per
+  float: right
+
+  margin: 10px 0
+  padding-top: 6px
+  display: inline-block
+  list-style: none
+  vertical-align: top
+
+  li
+    float: left
+    padding-left: 6px
+
+    a
+      background-color: #eee
+      color: #777
+
+      &.active
+        background-color: #f3565d
+        color: #fff
+        font-weight: bold
+
+
+input[type=radio], input[type=checkbox]
+  width: 40px
+
+.radio_buttons
+  span.radio
+    padding: 0
+    margin: 0
+
+    &.green
+      color: green
+    &.yellow
+      color: orange
+    &.red
+      color: #dc0000
+    &.silver
+      color: gray
+
+    input
+      margin: 0
+      height: 22px
+      vertical-align: middle
+      display: inline-block
+      float: none
+      width: 28px
+
+.post_featured_level
+  input[type=radio], input[type=checkbox]
+    margin-left: 0 !important
+
+.graph-edit
+  .table
+
+    td
+      vertical-align: middle
+    .bold
+      font-weight: bold
+      text-align: center
+
+    .col-sm-8
+      width: 100%
+      float: none
+
+.filter-form
+  margin: 20px 0
+
+  .submit-button
+    width: 100%
+    padding: 7px 16px 7px
+
+  form > div
+    padding: 0
+
+  select
+    border-radius: 0 !important
+
+.periods-data
+  .form-group
+    margin: 0
+
+  .col-sm-9
+    width: 100%
+    padding: 0
+
+
+.table-email-alerts
+  .actions
+    width: 200px
+    text-align: right
+

@@ -1,0 +1,5 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Automatic Email Alerts schedule' => admin_email_alert_schedules_path,
+                 "Editing <small>'#{@schedule.name}'</small>" => edit_admin_email_alert_schedule_path(@schedule) }
+h1.page-title= "Editing  ' #{@schedule.name} '"
+= render 'form'

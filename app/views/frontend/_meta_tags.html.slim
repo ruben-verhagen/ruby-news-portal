@@ -1,0 +1,23 @@
+- static_title = site_setting(:title)
+- custom_title = yield(:title)
+
+- title = custom_title.present? ? [custom_title, static_title].join(' / ') : static_title
+- descr = yield(:meta_description).present? ? yield(:meta_description) : site_setting(:meta_description)
+- keywords = yield(:meta_keywords).present? ? yield(:meta_keywords) : site_setting(:meta_keywords)
+
+title= title
+meta name="description" content='#{descr}'
+meta name="keywords" content='#{keywords}'
+meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+meta name="google-site-verification" content="-w9uV9cOLNuvwvPRE2i2yfIx5qLBTFLpkTbqLZR95tg"
+
+meta property="og:title" content="#{title}"
+meta property="og:url" content="#{request.url}"
+
+- if @post && @post.cover.path
+  meta property="og:image" content="#{request.protocol}#{request.host}#{@post.cover.url(:main)}"
+
+meta property="og:site_name" content="MNI Euro Insight"
+meta property="og:description" content="#{descr}"
+
+= auto_discovery_link_tag(:rss, feed_url(format: :rss))

@@ -1,0 +1,5 @@
+= render 'header_and_breadcrumbs',
+  breadcrumbs: { 'Post sections' => admin_post_sections_path,
+                 "Editing <small>'#{truncate(@post_section.name, length: 36)}'</small>" => edit_admin_post_section_path(@post_section) }
+
+= render 'form'

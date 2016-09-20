@@ -1,0 +1,9 @@
+- content_for(:title) { 'Euro cal' }
+h1 Euro cal
+p.pre-news
+.news-list
+  - @events.each do |event|
+    .news-block
+      span.date = l event.happens_at, format: :literal
+      h3 = event.title
+      == event.description
