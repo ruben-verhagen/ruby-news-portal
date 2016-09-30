@@ -1,0 +1,1 @@
+angular.module("templates").run(["$templateCache",function($templateCache){$templateCache.put("ckeditor/plugins/preview/preview.html","<script>\n\nvar doc = document;\ndoc.open();\ndoc.write( window.opener._cke_htmlToLoad );\ndoc.close();\n\ndelete window.opener._cke_htmlToLoad;\n\n</script>")}]);
