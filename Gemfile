@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.7'
 gem 'rails', '4.1.0'
 gem 'pg'
 
@@ -72,4 +72,9 @@ end
 
 group :development, :staging do
   gem 'puma'
+end
+
+group :production, :staging do
+  gem 'rails_12factor'
+  gem 'passenger'
 end
