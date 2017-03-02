@@ -55,6 +55,8 @@ gem 'addressable'
 
 gem 'seed_migration'
 
+gem 'puma'
+
 group :development do
   gem 'better_errors'
   gem 'spring'
@@ -70,11 +72,6 @@ group :development do
   gem 'capistrano3-puma'
 end
 
-group :development, :staging do
-  gem 'puma'
-end
-
 group :production, :staging do
   gem 'rails_12factor'
-  gem 'passenger'
 end

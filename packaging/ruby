@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "/usr/bin/euro-insight" "run" "ruby" "$@"
